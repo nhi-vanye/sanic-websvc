@@ -43,6 +43,39 @@ results (and handle the unicode characters for the currancy symbols)
 
 There is an OpenAPI (swagger) endpoint at 'http://127.0.0.1:8888/swagger/`
 
+The tax rates are read from the file `rules.json`, i.e.
+
+```
+{
+  "_doc_": [
+    "0% on earnings up to £12,500",
+    "20% on any earnings between £12,501 and £50,000",
+    "40% on any earnings between £50,001 and £150,000",
+    "45% on earnings of £150,001 and over",
+    "Order these rules from high to low"
+  ],
+  "rules": [
+    {
+      "from": 150001,
+      "rate": 0.45
+    },
+    {
+      "from": 50001,
+      "rate": 0.4
+    },
+    {
+      "from": 12501,
+      "rate": 0.2
+    },
+    {
+      "from": 0,
+      "rate": 0
+    }
+  ]
+}
+
+```
+
 
 Installing
 ----------
