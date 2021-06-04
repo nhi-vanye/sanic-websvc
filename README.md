@@ -49,8 +49,8 @@ Installing
 
 Create a virtual environment
 
-``
-% `python -m venv .websvc
+```
+% python -m venv .websvc
 ```
 
 Activate the virtual environment
