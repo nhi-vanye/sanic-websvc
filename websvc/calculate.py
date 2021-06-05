@@ -17,7 +17,7 @@ async def calculate_tax(salary: float = 0.0, details: bool = False) -> dict:
 
     # The assumption is that the rules are ordered by salary DESCENDING
     for rule in thisApp.RULES["rules"]:
-        if salary > rule["from"]:
+        if salary >= rule["from"]:
             tax_to_pay = (salary - rule["from"]) * rule["rate"]
 
             salary = rule["from"]
@@ -28,13 +28,13 @@ async def calculate_tax(salary: float = 0.0, details: bool = False) -> dict:
                 if last:
                     detailed.append(
                         f"Tax paid on salary between £{rule['from']} "
-                        "and £{last} = £{tax_to_pay:.2f}"
+                        f"and £{last} = £{tax_to_pay:.2f}"
                     )
                 else:
                     detailed.append(
-                        f"Tax paid on salary above £{rule['from']} " "= £{tax_to_pay:.2f}"
+                        f"Tax paid on salary above £{rule['from']} " f"= £{tax_to_pay:.2f}"
                     )
 
-        last = rule["from"] - 1
+            last = rule["from"] - 1
 
     return {"tax_owed": total_tax_to_pay, "details": detailed}
