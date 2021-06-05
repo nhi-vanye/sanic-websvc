@@ -1,0 +1,54 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.0.1
+  hooks:
+    - id: trailing-whitespace
+      stages: [ manual,commit ]
+    - id: end-of-file-fixer
+      stages: [ manual,commit ]
+    - id: check-yaml
+      stages: [ manual,commit ]
+      args: [--unsafe]
+    - id: check-added-large-files
+      stages: [ manual,commit ]
+    - id: check-merge-conflict
+      stages: [ manual,commit ]
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.0.1
+  hooks:
+    - id: debug-statements
+      stages: [ manual,commit ]
+
+- repo: https://github.com/asottile/seed-isort-config
+  rev: v2.2.0
+  hooks:
+    - id: seed-isort-config
+      stages: [ manual,commit ]
+
+- repo: https://github.com/timothycrosley/isort
+  rev: 5.8.0
+  hooks:
+    - id: isort
+      stages: [ manual,commit ]
+
+- repo: https://github.com/psf/black
+  rev: 21.5b1
+  hooks:
+    - id: black
+      stages: [ manual,commit ]
+      args: [--config=tools/blackrc]
+
+- repo: https://github.com/pycqa/flake8
+  rev: 3.9.2
+  hooks:
+    - id: flake8
+      stages: [ manual,commit ]
+      args: [--config=tools/flake8rc]
+
+- repo: https://github.com/pycqa/bandit
+  rev: 1.7.0
+  hooks:
+    - id: bandit
+      stages: [ manual,commit ]
+      args: [--configfile=tools/banditrc]
